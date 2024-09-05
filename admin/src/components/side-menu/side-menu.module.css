@@ -1,0 +1,46 @@
+.root {
+  position: sticky !important;
+  top: 60px;
+  height: calc(100vh - 60px);
+  background-color: #ffffff !important;
+  padding-top: 15px;
+  padding-bottom: 40px;
+}
+
+:global(.ant-layout-sider-trigger) {
+  box-shadow: 0px -4px 20px 0px rgba(72, 164, 236, 0.1);
+}
+
+.sider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logoutWrapper {
+  padding-inline: 24px;
+}
+
+.logout {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.menu {
+  border: none !important;
+}
+
+.requests {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  margin-left: 10px;
+}
+
+.badge sup {
+  background-color: #52c41a !important;
+}

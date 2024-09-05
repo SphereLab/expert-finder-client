@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding-inline: 6px;
+}
+
+.noPointer {
+  cursor: default;
+}

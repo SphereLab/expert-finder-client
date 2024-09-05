@@ -1,0 +1,44 @@
+.root {
+  height: 100%;
+  display: flex;
+  gap: 3%;
+  justify-content: space-between;
+  padding-top: 73px;
+}
+
+.content {
+  margin-top: 169px;
+  margin-left: 9.65%;
+  width: 48.6%;
+}
+
+.error {
+  color: #303a5d;
+  font-family: Averta-Semibold;
+  font-size: 38px;
+  line-height: 57px;
+  margin-right: 8px;
+}
+
+.name {
+  color: #303a5d;
+  font-family: Averta-Semibold;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.oops {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  color: #83899e;
+  font-family: Averta-Semibold;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.message {
+  color: #83899e;
+  font-family: Averta-Regular;
+  font-size: 16px;
+  line-height: 24px;
+}

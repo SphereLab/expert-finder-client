@@ -1,0 +1,9 @@
+.root {
+  padding: 5px 10px;
+}
+
+.checkboxGroup:global(.ant-checkbox-group) {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

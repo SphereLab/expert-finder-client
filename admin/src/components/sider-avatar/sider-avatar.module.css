@@ -1,0 +1,29 @@
+.roundFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.bigFrame {
+  background-color: #75baf0;
+  width: 52px;
+  height: 52px;
+}
+
+.middleFrame {
+  background-color: #bfe1fb;
+  width: 48px;
+  height: 48px;
+}
+
+.smallFrame {
+  background-color: #48a4ec;
+  width: 44px;
+  height: 44px;
+}
+
+.image {
+  width: 42px;
+  height: 42px;
+}

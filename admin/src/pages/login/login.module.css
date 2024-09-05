@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 4px 20px rgba(72, 164, 236, 0.1);
+}
+
+.card {
+  display: flex;
+  padding: 56px;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0px 20px 30px 0px rgba(72, 164, 236, 0.12);
+  border: none;
+  border-radius: 4px;
+}
+
+.title {
+  color: #303a5d;
+  font-family: Averta-Bold;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 0 0 12px 0 !important;
+}
+
+.subTitle {
+  color: #303a5d;
+  opacity: 0.4;
+  font-family: Averta-Regular;
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 32px;
+}

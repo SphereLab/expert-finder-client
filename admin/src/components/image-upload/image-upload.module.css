@@ -1,0 +1,23 @@
+.button {
+  border: 0;
+  background: none;
+}
+
+.text {
+  margin-top: 8px;
+}
+
+.button,
+.text {
+  cursor: pointer;
+}
+
+.error :global(.ant-upload) {
+  border-color: red !important;
+}
+
+.errorText {
+  max-width: 200px;
+  color: red;
+  margin-top: 4px;
+}

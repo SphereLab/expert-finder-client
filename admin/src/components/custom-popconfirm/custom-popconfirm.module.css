@@ -1,0 +1,11 @@
+.root :global(.ant-popover-content) {
+  width: 400px;
+}
+
+.root :global(.ant-popover-inner) {
+  padding: 32px;
+}
+
+.root :global(.anticon) {
+  margin-right: 16px !important;
+}

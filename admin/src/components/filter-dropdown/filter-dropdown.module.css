@@ -1,0 +1,36 @@
+.filterDropdown {
+  width: max-content;
+  padding: 10px 16px 8px 16px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow:
+    0px 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0px 6px 16px 0px rgba(0, 0, 0, 0.08),
+    0px 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filterForm {
+  width: 320px;
+}
+
+.filterDivider {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.filterResetButton {
+  border: none;
+  box-shadow: none;
+}
+
+.filterSearchButton {
+  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.02);
+}
+
+.filterIcon {
+  color: #4096ff;
+}
+
+.disabledIcon {
+  color: #d8d8d8;
+}
