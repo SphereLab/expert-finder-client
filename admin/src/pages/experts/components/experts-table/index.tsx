@@ -12,7 +12,7 @@ import { TableResponse } from '@/shared/types';
 import { useSelectedColumns } from '@/utils/hooks/use-selected-columns';
 import { setItemToLocalStorage } from '@/utils/set-item-to-local-storage';
 
-import { ExpertsSorterType, ExpertsSourceType, FilterType, SetFilters } from '../../types';
+import { ExpertSorterType, ExpertSourceType, FilterType, SetFilters } from '../../types';
 
 const defaultColumns = [
   { value: 'id', label: 'Id' },
@@ -31,16 +31,16 @@ interface ExpertsTableProps {
 export const ExpertsTable: FC<ExpertsTableProps> = ({ filters, setFilters }) => {
   const [selectedColumns, setSelectedColumns] = useSelectedColumns(columnName, defaultColumnsKeys);
 
-  const [dataSource, setDataSource] = useState<ExpertsSourceType[]>([]);
+  const [dataSource, setDataSource] = useState<ExpertSourceType[]>([]);
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchTableData = useCallback(() => {
     setIsLoading(true);
 
-    handleApiRequest<TableResponse<ExpertsSourceType>>({
-      url: `${REFS.EXPERTS}/getPersonalInvoices`,
-      method: 'POST',
+    handleApiRequest<TableResponse<ExpertSourceType>>({
+      url: `${REFS.EXPERTS}/filter`,
+      method: 'GET',
       body: filters,
     })
       .then(res => {
@@ -54,7 +54,7 @@ export const ExpertsTable: FC<ExpertsTableProps> = ({ filters, setFilters }) => 
     fetchTableData();
   }, [fetchTableData]);
 
-  const columns: ColumnsType<ExpertsSourceType> = [
+  const columns: ColumnsType<ExpertSourceType> = [
     {
       dataIndex: 'id',
       title: 'Id',
@@ -96,7 +96,7 @@ export const ExpertsTable: FC<ExpertsTableProps> = ({ filters, setFilters }) => 
     },
   ];
 
-  const renderActionsMenu = (row: ExpertsSourceType) => {
+  const renderActionsMenu = (row: ExpertSourceType) => {
     const { id } = row;
 
     const actionsMenu: MenuProps['items'] = [
@@ -117,14 +117,14 @@ export const ExpertsTable: FC<ExpertsTableProps> = ({ filters, setFilters }) => 
 
   const handleTableChange = (
     pagination: TablePaginationConfig,
-    sorter: SorterResult<ExpertsSourceType> | SorterResult<ExpertsSourceType>[],
+    sorter: SorterResult<ExpertSourceType> | SorterResult<ExpertSourceType>[],
   ) => {
     if (Array.isArray(sorter)) {
       return;
     }
 
-    const sort: ExpertsSorterType = {
-      field: sorter.field as ExpertsSorterType['field'],
+    const sort: ExpertSorterType = {
+      field: sorter.field as ExpertSorterType['field'],
       order: sorter.order === 'ascend' ? 'asc' : 'desc',
     };
 

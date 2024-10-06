@@ -6,9 +6,8 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { CustomPopconfirm } from '@/components/custom-popconfirm';
 import { CustomRow } from '@/components/custom-row';
 import { fieldRules } from '@/shared/constants';
-import { Language as LanguageType } from '@/shared/types';
+import { ExpertType, Language as LanguageType } from '@/shared/types';
 
-import { ExpertFormFields } from '../../types';
 import { Title } from '../title';
 
 import styles from './languages.module.css';
@@ -71,7 +70,7 @@ export const Language: FC<LanguageProps> = ({
       <div className={styles.additionalSectionWrapper}>
         <div className={clsx(styles.section, styles.additionalSection)}>
           <CustomRow>
-            <FormItem<ExpertFormFields['languages']>
+            <FormItem<ExpertType['languages']>
               className={styles.formItem}
               name={[field.name, 'languageId']}
               label="Language"

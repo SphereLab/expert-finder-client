@@ -6,17 +6,16 @@ import { handleApiRequest } from '@/api/api-service';
 import { REFS } from '@/api/refs';
 import { Loader } from '@/components/loader';
 import { PATHS } from '@/components/routes/paths';
-import { Language, Location, Position, Skill } from '@/shared/types';
+import { ExpertType, Language, Location, Position, Skill } from '@/shared/types';
 
 import { Editors } from './components/editors';
 import { Footer } from './components/footer';
 import { General } from './components/general';
-import { ExpertFormFields } from './types';
 
 import styles from './expert.module.css';
 
 export const Expert = () => {
-  const [form] = Form.useForm<ExpertFormFields>();
+  const [form] = Form.useForm<ExpertType>();
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -55,7 +54,7 @@ export const Expert = () => {
     navigate(PATHS.EXPERTS);
   };
 
-  const handleSubmit = (qwe: ExpertFormFields) => {
+  const handleSubmit = (qwe: ExpertType) => {
     console.log(qwe);
   };
 

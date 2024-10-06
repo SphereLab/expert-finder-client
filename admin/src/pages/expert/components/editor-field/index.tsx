@@ -3,8 +3,8 @@ import { Form, FormInstance, Input } from 'antd';
 
 import { MDEditor } from '@/components/md-editor';
 import { fieldRules } from '@/shared/constants';
+import { ExpertType } from '@/shared/types';
 
-import { ExpertFormFields } from '../../types';
 import { Section } from '../section';
 import { Title } from '../title';
 
@@ -15,7 +15,7 @@ const FormItem = Form.Item;
 interface EditorFieldProps {
   title: string;
   form: FormInstance;
-  name: keyof ExpertFormFields;
+  name: keyof ExpertType;
   handleEditorChange: (content: string, fieldName: string) => void;
   required?: boolean;
 }
@@ -39,7 +39,7 @@ export const EditorField: FC<EditorFieldProps> = ({
           form.validateFields([name]);
         }}
       />
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         name={name}
         className={styles.editorInput}
         {...(required && {

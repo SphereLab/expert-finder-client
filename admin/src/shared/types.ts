@@ -89,3 +89,23 @@ export interface Skill {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface ExpertType {
+  displayName: string;
+  totalYears: number;
+  aboutMe: string;
+  experienceHighlights: string;
+  name: string;
+  slug: string;
+  expertStatus: string;
+  yearsOfExpertise: string;
+  positionId: number;
+  technologiesAndSkills: string;
+  projectIndustriesHistory: string;
+  educationAndCertification: string;
+  locationId: number;
+  timezone: string;
+  skillIds: number[];
+  expertiseIds: number[];
+  languages: string[];
+}

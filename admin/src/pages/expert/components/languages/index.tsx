@@ -1,16 +1,17 @@
 import { FC } from 'react';
 import { Form, FormInstance } from 'antd';
 
-import { Language as LanguageType } from '@/shared/types';
+import { ExpertType, Language as LanguageType } from '@/shared/types';
 
-import { ExpertFormFields } from '../../types';
 import { Section } from '../section';
 import { Language } from './language';
 
 export interface LanguagesProps {
   languages: LanguageType[];
-  form: FormInstance<ExpertFormFields>;
+  form: FormInstance<ExpertType>;
 }
+
+// TODO: probably delete the folder
 
 export const Languages: FC<LanguagesProps> = ({ languages, form }) => (
   <Section>

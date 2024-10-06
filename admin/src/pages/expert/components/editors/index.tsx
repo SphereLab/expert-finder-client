@@ -2,16 +2,17 @@ import { FC } from 'react';
 import { Fragment } from 'react/jsx-runtime';
 import { FormInstance } from 'antd';
 
-import { ExpertFormFields } from '../../types';
+import { ExpertType } from '@/shared/types';
+
 import { EditorField } from '../editor-field';
 
 interface EditorsProps {
-  form: FormInstance<ExpertFormFields>;
+  form: FormInstance<ExpertType>;
 }
 
 export const Editors: FC<EditorsProps> = ({ form }) => {
   const handleEditorChange = (content: string, fieldName: string) => {
-    form.setFieldValue(fieldName as keyof ExpertFormFields, content);
+    form.setFieldValue(fieldName as keyof ExpertType, content);
   };
 
   return (

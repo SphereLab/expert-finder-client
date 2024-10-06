@@ -1,10 +1,11 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { PaginationType, SorterType } from '@/shared/types';
+import { ExpertType, PaginationType, SorterType } from '@/shared/types';
 
 export type SetFilters = Dispatch<SetStateAction<FilterType>>;
 
-export interface ExpertsSourceType {
+// TODO: refactor ExpertSourceType
+export interface ExpertSourceType extends ExpertType {
   id: number;
   firstName: string;
   profilePicture: string;
@@ -16,11 +17,11 @@ export interface FilterFieldType {
   period: string;
 }
 
-export type ExpertsSorterType = SorterType<
-  keyof Pick<ExpertsSourceType, 'firstName' | 'profilePicture' | 'updatedAt'>
+export type ExpertSorterType = SorterType<
+  keyof Pick<ExpertSourceType, 'firstName' | 'profilePicture' | 'updatedAt'>
 >;
 
 export type FilterType = Partial<FilterFieldType> &
   PaginationType & {
-    sort: ExpertsSorterType;
+    sort: ExpertSorterType;
   };

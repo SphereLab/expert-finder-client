@@ -4,10 +4,9 @@ import timezones from 'timezones-list';
 
 import { CustomRow } from '@/components/custom-row';
 import { fieldRules } from '@/shared/constants';
-import { Language, Location, Position, Skill } from '@/shared/types';
+import { ExpertType, Language, Location, Position, Skill } from '@/shared/types';
 
 import { statuses } from '../../constants';
-import { ExpertFormFields } from '../../types';
 import { Section } from '../section';
 import { Title } from '../title';
 
@@ -28,16 +27,11 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
     <Title title="General information" className={styles.title} />
 
     <CustomRow className={styles.row}>
-      <FormItem<ExpertFormFields>
-        className={styles.formItem}
-        name="name"
-        label="Name"
-        rules={fieldRules}
-      >
+      <FormItem<ExpertType> className={styles.formItem} name="name" label="Name" rules={fieldRules}>
         <Input size="large" placeholder="Enter name here" />
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         name="displayName"
         label="Display name"
@@ -46,7 +40,7 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         <Input size="large" placeholder="Enter display name here" />
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         // name="displayName"
         label="Avatar"
@@ -55,16 +49,11 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         Upload
       </FormItem>
 
-      <FormItem<ExpertFormFields>
-        className={styles.formItem}
-        name="slug"
-        label="Slug"
-        rules={fieldRules}
-      >
+      <FormItem<ExpertType> className={styles.formItem} name="slug" label="Slug" rules={fieldRules}>
         <Input size="large" placeholder="Enter slug here" />
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         name="totalYears"
         label="Total years"
@@ -73,7 +62,7 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         <InputNumber className="fullWidth" size="large" placeholder="Enter total years here" />
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         name="yearsOfExpertise"
         label="Years of expertise"
@@ -82,7 +71,7 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         <Input size="large" placeholder="Enter years of expertise here" />
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         name="timezone"
         label="Timezone"
@@ -97,7 +86,7 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         </Select>
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         name="locationId"
         label="Location"
@@ -112,7 +101,7 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         </Select>
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         name="expertStatus"
         label="Status"
@@ -127,7 +116,7 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         </Select>
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         name="positionId"
         label="Position"
@@ -142,7 +131,7 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         </Select>
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         name="expertiseIds"
         label="Expertise"
@@ -164,7 +153,7 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         </Select>
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         name="skillIds"
         label="Skills"
@@ -186,7 +175,7 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         </Select>
       </FormItem>
 
-      <FormItem<ExpertFormFields>
+      <FormItem<ExpertType>
         className={styles.formItem}
         name="languages"
         label="Languages"
