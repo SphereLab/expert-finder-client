@@ -1,12 +1,11 @@
-import { FC } from 'react';
 import { Table, TableProps } from 'antd';
 
-interface TableDataType extends TableProps {
+interface TableDataType<T> extends TableProps<T> {
   total?: number;
   current?: number;
 }
 
-export const DefaultTable: FC<TableDataType> = ({ total, current, ...props }) => (
+export const DefaultTable = <T extends object>({ total, current, ...props }: TableDataType<T>) => (
   <Table
     rowKey="id"
     bordered

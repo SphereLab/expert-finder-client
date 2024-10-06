@@ -12,6 +12,8 @@ import { UserProfile } from '../user-profile';
 
 import styles from './side-menu.module.css';
 
+const excludePaths = [PATHS.LOGIN, PATHS.EXPERT];
+
 export const SideMenu = () => {
   const { pathname } = useLocation();
   const { setIsAuthenticated } = useAuth();
@@ -19,11 +21,11 @@ export const SideMenu = () => {
 
   const [collapsed, setCollapsed] = useState(false);
 
-  if (userInfo === null) {
-    return;
-  }
+  const currentPath = `/${pathname.split('/')[1]}`;
 
-  const currentPath = '/' + pathname.split('/')[1];
+  if (excludePaths.includes((currentPath as PATHS) || userInfo === null)) {
+    return null;
+  }
 
   const handleItemClick = (e: MouseEvent<HTMLAnchorElement>, key: string) => {
     if (key === currentPath) {

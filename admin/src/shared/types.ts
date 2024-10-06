@@ -26,11 +26,6 @@ export interface UserInfo {
   deletedAt: null;
 }
 
-export interface Department {
-  id: number;
-  title: string;
-}
-
 export interface User {
   id: number;
   key?: string;
@@ -55,4 +50,42 @@ export interface PaginationType {
 export interface SorterType<T> {
   field: T;
   order: 'asc' | 'desc';
+}
+
+export interface Language {
+  id: number;
+  name: string;
+  slug: string;
+  status: string;
+}
+
+export interface Location {
+  id: number;
+  name: string;
+  slug: string;
+  timezone: null;
+  status: string;
+}
+
+export interface Position {
+  id: number;
+  name: string;
+  slug: string;
+  categoryHeading: string;
+  metaDescription: null;
+  categoryRichTextDescription: string;
+  status: string;
+}
+
+export interface Skill {
+  id: number;
+  name: string;
+  slug: string;
+  categoryHeading: string;
+  metaDescription: null;
+  categoryRichTextDescription: string;
+  status: string;
+  typeId: number;
+  createdAt: Date;
+  updatedAt: Date;
 }

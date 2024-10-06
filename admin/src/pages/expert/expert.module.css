@@ -1,0 +1,9 @@
+.root {
+  background-color: #fff;
+  width: 100%;
+  height: max-content;
+}
+
+.section {
+  padding-inline: 16px;
+}

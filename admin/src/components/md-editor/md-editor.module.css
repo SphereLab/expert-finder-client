@@ -1,0 +1,9 @@
+.requiredMessage {
+  color: #ff4d4f;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.showMessage {
+  opacity: 1;
+}

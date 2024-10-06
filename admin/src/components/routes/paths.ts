@@ -3,4 +3,5 @@ export enum PATHS {
   PERMISSION_DENIED = '/permission-denied',
   NOT_FOUND = '/not-found',
   EXPERTS = '/experts',
+  EXPERT = '/expert',
 }
