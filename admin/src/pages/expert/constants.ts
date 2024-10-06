@@ -1,18 +1,3 @@
-export const statuses = [
-  {
-    label: 'Active',
-    value: 'active',
-  },
-  {
-    label: 'Archived',
-    value: 'archived',
-  },
-  {
-    label: 'Draft',
-    value: 'draft',
-  },
-];
-
 export const proficiencyLevels = [
   { label: 'Elementary', value: 'elementary' },
   { label: 'Intermediate', value: 'intermediate' },
@@ -20,3 +5,5 @@ export const proficiencyLevels = [
   { label: 'Advanced', value: 'advanced' },
   { label: 'Native', value: 'native' },
 ];
+
+// TODO: potentially remove this file

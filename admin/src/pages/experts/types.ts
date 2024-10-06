@@ -14,7 +14,11 @@ export interface ExpertSourceType extends ExpertType {
 }
 
 export interface FilterFieldType {
-  period: string;
+  search: string;
+  status: string;
+  timezone: string;
+  totalYears: string;
+  yearsOfExpertise: string;
 }
 
 export type ExpertSorterType = SorterType<

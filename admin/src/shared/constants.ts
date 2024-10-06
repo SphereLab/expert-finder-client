@@ -8,3 +8,18 @@ export const fieldRules = [
 ];
 
 export const sortDirections: SortOrder[] = ['ascend', 'descend', 'ascend'];
+
+export const statuses = [
+  {
+    label: 'Active',
+    value: 'active',
+  },
+  {
+    label: 'Archived',
+    value: 'archived',
+  },
+  {
+    label: 'Draft',
+    value: 'draft',
+  },
+];

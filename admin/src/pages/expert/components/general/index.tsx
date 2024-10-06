@@ -3,10 +3,9 @@ import { Form, Input, InputNumber, Select } from 'antd';
 import timezones from 'timezones-list';
 
 import { CustomRow } from '@/components/custom-row';
-import { fieldRules } from '@/shared/constants';
+import { fieldRules, statuses } from '@/shared/constants';
 import { ExpertType, Language, Location, Position, Skill } from '@/shared/types';
 
-import { statuses } from '../../constants';
 import { Section } from '../section';
 import { Title } from '../title';
 

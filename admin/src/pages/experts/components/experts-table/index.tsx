@@ -2,6 +2,7 @@ import { FC, useCallback, useEffect, useState } from 'react';
 import { Dropdown, MenuProps } from 'antd';
 import { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 import { SorterResult } from 'antd/es/table/interface';
+import queryString from 'query-string';
 import { EyeOutlined, MoreOutlined, SettingOutlined } from '@ant-design/icons';
 
 import { handleApiRequest } from '@/api/api-service';
@@ -38,10 +39,12 @@ export const ExpertsTable: FC<ExpertsTableProps> = ({ filters, setFilters }) => 
   const fetchTableData = useCallback(() => {
     setIsLoading(true);
 
+    const { sort, ...rest } = filters;
+    const queryParams = `${queryString.stringify(rest)}&sort=${sort.field}:${sort.order}`;
+
     handleApiRequest<TableResponse<ExpertSourceType>>({
-      url: `${REFS.EXPERTS}/filter`,
+      url: `${REFS.EXPERTS}/filter?${queryParams}`,
       method: 'GET',
-      body: filters,
     })
       .then(res => {
         setDataSource(res.data);
