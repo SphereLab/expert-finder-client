@@ -7,7 +7,6 @@ import { logout } from '@/utils/logout';
 
 import { useAuth } from '../auth-context/use-auth';
 import { PATHS } from '../routes/paths';
-import { useUser } from '../user-context/use-user';
 import { UserProfile } from '../user-profile';
 
 import styles from './side-menu.module.css';
@@ -16,8 +15,7 @@ const excludePaths = [PATHS.LOGIN, PATHS.EXPERT];
 
 export const SideMenu = () => {
   const { pathname } = useLocation();
-  const { setIsAuthenticated } = useAuth();
-  const { userInfo } = useUser();
+  const { setIsAuthenticated, userInfo } = useAuth();
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -55,7 +53,10 @@ export const SideMenu = () => {
 
   const handleLogoutClick = () => {
     setIsAuthenticated('unauthenticated');
-    logout();
+    logout({
+      forceLogout: false,
+      redirect: false,
+    });
   };
 
   return (

@@ -6,7 +6,6 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Routes } from '@/components/routes';
 
 import { AuthProvider } from './components/auth-context/auth-provider';
-import { UserProvider } from './components/user-context/user-provider';
 
 import './index.css';
 
@@ -59,11 +58,9 @@ const App = () => (
     >
       <AntdApp>
         <AuthProvider>
-          <UserProvider>
-            <Layout>
-              <Routes />
-            </Layout>
-          </UserProvider>
+          <Layout>
+            <Routes />
+          </Layout>
         </AuthProvider>
       </AntdApp>
     </ConfigProvider>

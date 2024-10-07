@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { TokenInfo } from '@/shared/types';
+import { UserInfo } from '@/shared/types';
 import { useLocalStorage } from '@/utils/hooks/use-local-storage';
 
 import { AuthContext } from './context';
@@ -13,9 +13,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     'isAuthenticated',
     'unauthenticated',
   );
-  const [tokenInfo, setTokenInfo] = useLocalStorage<TokenInfo | null>('tokenInfo', null);
+  const [userInfo, setUserInfo] = useLocalStorage<UserInfo | null>('userInfo', null);
 
-  const value = { isAuthenticated, setIsAuthenticated, tokenInfo, setTokenInfo };
+  const value = { isAuthenticated, setIsAuthenticated, userInfo, setUserInfo };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

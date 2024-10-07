@@ -9,6 +9,9 @@ export const getItemFromLocalStorage = (key: string): any => {
   try {
     return JSON.parse(decompress(compressedValue));
   } catch {
-    logout();
+    logout({
+      forceLogout: false,
+      redirect: true,
+    });
   }
 };

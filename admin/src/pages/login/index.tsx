@@ -8,8 +8,7 @@ import { REFS } from '@/api/refs';
 import { useAuth } from '@/components/auth-context/use-auth';
 import { Loader } from '@/components/loader';
 import { PATHS } from '@/components/routes/paths';
-import { useUser } from '@/components/user-context/use-user';
-import { AuthResponse } from '@/shared/types';
+import { UserInfo } from '@/shared/types';
 import { getItemFromLocalStorage } from '@/utils/get-item-from-local-storage';
 import { useTitle } from '@/utils/hooks/use-title';
 import { removeItemFromLocalStorage } from '@/utils/remove-item-from-local-storage';
@@ -19,8 +18,7 @@ import styles from './login.module.css';
 export const Login = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const { isAuthenticated, setIsAuthenticated, setTokenInfo } = useAuth();
-  const { setUserInfo } = useUser();
+  const { isAuthenticated, setIsAuthenticated, setUserInfo } = useAuth();
   const { message } = App.useApp();
   const [isPageLoading, setIsPageLoading] = useState(false);
 
@@ -45,18 +43,16 @@ export const Login = () => {
           onSuccess={credentialResponse => {
             setIsPageLoading(true);
 
-            handleApiRequest<AuthResponse>({
+            handleApiRequest<UserInfo>({
               url: REFS.AUTH,
               method: 'POST',
               body: {
-                idToken: credentialResponse.credential,
+                credential: credentialResponse.credential,
               },
             })
-              .then(response => {
-                const { user, ...tokenInfo } = response;
+              .then(userInfo => {
                 setIsAuthenticated('authenticated');
-                setUserInfo(user);
-                setTokenInfo(tokenInfo);
+                setUserInfo(userInfo);
 
                 const previousLocation = getItemFromLocalStorage('previousLocation');
                 const from = state?.from?.pathname || previousLocation || PATHS.EXPERTS;

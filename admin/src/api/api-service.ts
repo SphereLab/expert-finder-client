@@ -1,7 +1,6 @@
 import axios from 'axios';
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
 
-import { PATHS } from '@/components/routes/paths';
 import { getToken } from '@/utils/get-token';
 import { logout } from '@/utils/logout';
 import { setAccessToken } from '@/utils/set-access-token';
@@ -39,19 +38,22 @@ const handleAuthError = (failedRequest: any) => {
   return refreshApi(REFS.REFRESH_TOKEN, {
     method: 'POST',
     data: {
-      refreshToken: getToken('refresh'),
+      refresh_token: getToken('refresh'),
     },
   }).then(({ data }) => {
-    setAccessToken(data);
+    setAccessToken(data.access_token);
 
-    failedRequest.response.config.headers['Authorization'] = 'Bearer ' + data;
+    failedRequest.response.config.headers['Authorization'] = 'Bearer ' + data.access_token;
     return Promise.resolve();
   });
 };
 
 const handleRefreshFailed = async () => {
   try {
-    logout(true);
+    logout({
+      forceLogout: true,
+      redirect: true,
+    });
     return Promise.resolve();
   } catch (error) {
     return Promise.reject(error);
@@ -65,9 +67,9 @@ export const handleApiRequest = async <T>({
   url,
   method = 'GET',
   body = '',
-  signal,
   isBlob = false,
   isFormData = false,
+  signal,
 }: IApiRequest) => {
   try {
     const response = await baseAxiosInstance(url, {
@@ -82,10 +84,7 @@ export const handleApiRequest = async <T>({
 
     return response.data as Promise<T>;
   } catch (error: any) {
-    if (error.response?.status === 403) {
-      window.location.href = PATHS.PERMISSION_DENIED;
-      throw error;
-    } else if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error)) {
       throw error.response?.data;
     } else {
       throw new Error('different error than axios');

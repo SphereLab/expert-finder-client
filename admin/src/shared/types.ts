@@ -1,29 +1,17 @@
 import { ROLES } from './enums';
 
-export interface AuthResponse extends TokenInfo {
-  user: UserInfo;
-}
-
-export interface TokenInfo {
-  token: string;
-  refreshToken: string;
-  tokenExpires: number;
-}
-
 export interface UserInfo {
-  email: string;
-  photo: string;
+  access_token: string;
+  refresh_token: string;
+  id: number;
+  googleId: string;
   firstName: string;
   lastName: string;
-  role: ROLES;
-  invoiceTemplateId: null;
-  subsidiaryId: null;
-  personalInfoId: null;
-  legalInfoId: null;
-  updatedAt: string;
-  id: number;
-  createdAt: string;
-  deletedAt: null;
+  email: string;
+  photo: string;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface User {

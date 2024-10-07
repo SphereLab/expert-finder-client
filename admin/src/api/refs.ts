@@ -1,7 +1,7 @@
 export const BASE_URL = `${import.meta.env.VITE_BASE_URL}/api`;
 
 export enum REFS {
-  AUTH = 'auth/google/login',
+  AUTH = 'auth/login',
   REFRESH_TOKEN = 'auth/exchange-refresh-token',
   EXPERTS = 'experts',
   LANGUAGES = 'languages',

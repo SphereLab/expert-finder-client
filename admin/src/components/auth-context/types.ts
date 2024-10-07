@@ -1,4 +1,4 @@
-import { TokenInfo } from '@/shared/types';
+import { UserInfo } from '@/shared/types';
 
 export type IsAuthenticated = 'authenticated' | 'unauthenticated';
 
@@ -7,6 +7,6 @@ export interface ContextType {
   setIsAuthenticated: (
     value: IsAuthenticated | ((val: IsAuthenticated) => IsAuthenticated),
   ) => void;
-  tokenInfo: TokenInfo | null;
-  setTokenInfo: (value: TokenInfo | ((val: TokenInfo | null) => TokenInfo | null) | null) => void;
+  userInfo: UserInfo | null;
+  setUserInfo: (value: UserInfo | ((val: UserInfo | null) => UserInfo | null) | null) => void;
 }

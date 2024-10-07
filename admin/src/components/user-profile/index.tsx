@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { Flex, Typography } from 'antd';
 import clsx from 'clsx';
 
+import { useAuth } from '../auth-context/use-auth';
 import { SiderAvatar } from '../sider-avatar';
-import { useUser } from '../user-context/use-user';
 
 import styles from './user-profile.module.css';
 
@@ -14,7 +14,7 @@ interface UserProfileProps {
 }
 
 export const UserProfile: FC<UserProfileProps> = ({ collapsed }) => {
-  const { userInfo } = useUser();
+  const { userInfo } = useAuth();
 
   if (userInfo === null) {
     return null;
