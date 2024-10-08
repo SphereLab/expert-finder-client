@@ -1,13 +1,16 @@
-import { FC, useCallback, useEffect, useState } from 'react';
-import { Dropdown, MenuProps } from 'antd';
+import { FC, Fragment, useCallback, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { App, Dropdown, MenuProps } from 'antd';
 import { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 import { SorterResult } from 'antd/es/table/interface';
 import queryString from 'query-string';
-import { EyeOutlined, MoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined, MoreOutlined, SettingOutlined } from '@ant-design/icons';
 
 import { handleApiRequest } from '@/api/api-service';
 import { REFS } from '@/api/refs';
 import { DefaultTable } from '@/components/default-table';
+import { DeleteModal } from '@/components/delete-modal';
+import { PATHS } from '@/components/routes/paths';
 import { TableColumnFilter } from '@/components/table-column-filter';
 import { TableResponse } from '@/shared/types';
 import { useSelectedColumns } from '@/utils/hooks/use-selected-columns';
@@ -17,7 +20,7 @@ import { ExpertSorterType, ExpertSourceType, FilterType, SetFilters } from '../.
 
 const defaultColumns = [
   { value: 'id', label: 'Id' },
-  { value: 'firstName', label: 'First Name' },
+  { value: 'name', label: 'Name' },
   { value: 'profilePicture', label: 'Profile Picture' },
   { value: 'yearsOfExperience', label: 'Years Of Experience' },
 ];
@@ -30,11 +33,14 @@ interface ExpertsTableProps {
 }
 
 export const ExpertsTable: FC<ExpertsTableProps> = ({ filters, setFilters }) => {
+  const { message } = App.useApp();
+  const navigate = useNavigate();
   const [selectedColumns, setSelectedColumns] = useSelectedColumns(columnName, defaultColumnsKeys);
 
   const [dataSource, setDataSource] = useState<ExpertSourceType[]>([]);
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [modalInfo, setModalInfo] = useState<ExpertSourceType | null>(null);
 
   const fetchTableData = useCallback(() => {
     setIsLoading(true);
@@ -64,9 +70,9 @@ export const ExpertsTable: FC<ExpertsTableProps> = ({ filters, setFilters }) => 
       hidden: !selectedColumns.includes('id'),
     },
     {
-      dataIndex: 'firstName',
-      title: 'First Name',
-      hidden: !selectedColumns.includes('firstName'),
+      dataIndex: 'name',
+      title: 'Name',
+      hidden: !selectedColumns.includes('name'),
     },
     {
       dataIndex: 'profilePicture',
@@ -105,12 +111,20 @@ export const ExpertsTable: FC<ExpertsTableProps> = ({ filters, setFilters }) => 
     const actionsMenu: MenuProps['items'] = [
       {
         key: '1',
-        label: 'View',
-        icon: <EyeOutlined className="menuIcon" />,
+        label: (
+          <Link to={`${PATHS.EXPERT}/${id}`} onClick={e => e.stopPropagation()}>
+            Edit
+          </Link>
+        ),
+        icon: <EditOutlined className="menuIcon" />,
+      },
+      {
+        key: '2',
+        label: 'Delete',
+        icon: <DeleteOutlined className="menuIcon" />,
         onClick: e => {
           e.domEvent.stopPropagation();
-          // eslint-disable-next-line no-console
-          console.log(id);
+          setModalInfo(row);
         },
       },
     ];
@@ -150,15 +164,56 @@ export const ExpertsTable: FC<ExpertsTableProps> = ({ filters, setFilters }) => 
     });
   };
 
+  const handleDeleteExpert = (userId: number) => {
+    setIsLoading(true);
+
+    handleApiRequest({
+      url: `${REFS.EXPERTS}/${userId}`,
+      method: 'DELETE',
+    })
+      .then(() => {
+        message.success('Expert deleted successfully');
+        setModalInfo(null);
+      })
+      .then(() => {
+        if (dataSource.length === 1) {
+          setFilters(prev => ({
+            ...prev,
+            page: prev.page === 1 ? 1 : prev.page - 1,
+          }));
+        } else {
+          fetchTableData();
+        }
+      })
+      .catch(() => message.error('Something went wrong.'))
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   return (
-    <DefaultTable
-      rowKey="id"
-      columns={columns}
-      dataSource={dataSource}
-      onChange={(pagination, _, sorter) => handleTableChange(pagination, sorter)}
-      loading={isLoading}
-      current={filters.page}
-      total={total}
-    />
+    <Fragment>
+      <DefaultTable
+        rowKey="id"
+        columns={columns}
+        dataSource={dataSource}
+        onChange={(pagination, _, sorter) => handleTableChange(pagination, sorter)}
+        loading={isLoading}
+        current={filters.page}
+        total={total}
+        onRow={row => ({
+          onClick: () => {
+            navigate(`${PATHS.EXPERT}/${row.id}`);
+          },
+        })}
+      />
+
+      <DeleteModal
+        open={modalInfo !== null}
+        onCancel={() => setModalInfo(null)}
+        onOk={() => modalInfo && handleDeleteExpert(modalInfo.id)}
+        question={`Are you sure you want to delete the expert ${modalInfo?.name}`}
+      />
+    </Fragment>
   );
 };

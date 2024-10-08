@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useCallback, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { App, Divider, Form } from 'antd';
 
 import { handleApiRequest } from '@/api/api-service';
@@ -18,12 +18,25 @@ export const Expert = () => {
   const { message } = App.useApp();
   const [form] = Form.useForm<ExpertType>();
   const navigate = useNavigate();
+  const { expertId } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
   const [languages, setLanguages] = useState<Language[]>([]);
   const [locations, setLocations] = useState<Location[]>([]);
   const [positions, setPositions] = useState<Position[]>([]);
   const [skills, setSkills] = useState<Skill[]>([]);
+
+  const attachFormValues = useCallback(
+    (values: ExpertType) => {
+      const { languages: resLanguages, skills: resSkills, ...restValues } = values;
+
+      form.setFieldsValue({
+        ...restValues,
+        languagesIds: resLanguages.map(({ languageId }) => languageId),
+      });
+    },
+    [form],
+  );
 
   useEffect(() => {
     Promise.all([
@@ -51,12 +64,22 @@ export const Expert = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (expertId) {
+      handleApiRequest<ExpertType>({
+        url: `${REFS.EXPERTS}/${Number(expertId)}`,
+      }).then(attachFormValues);
+    }
+  }, [expertId, attachFormValues]);
+
   const navigateToExpertsPage = () => {
     navigate(PATHS.EXPERTS);
   };
 
   const handleSubmit = (fields: ExpertType) => {
-    const { languages: fieldsLanguages, skillIds, expertiseIds, ...restFields } = fields;
+    setIsLoading(true);
+
+    const { languagesIds, skillIds, expertiseIds, ...restFields } = fields;
 
     const mergedSkills = expertiseIds.map(id => ({ skillId: id, isExpertise: true }));
     skillIds
@@ -67,21 +90,18 @@ export const Expert = () => {
 
     const body = {
       ...restFields,
-      languages: fieldsLanguages.map(id => ({
+      languages: languagesIds.map(id => ({
         languageId: id,
       })),
       skills: mergedSkills,
     };
 
-    setIsLoading(true);
-
-    const isEditing = false;
-
+    const isEditing = !!expertId;
     let url;
     let method;
 
     if (isEditing) {
-      url = `${REFS.EXPERTS}/${100}`;
+      url = `${REFS.EXPERTS}/${expertId}`;
       method = 'PUT';
     } else {
       url = REFS.EXPERTS;

@@ -37,7 +37,7 @@ const AppRoutes = () => {
           ),
         },
         {
-          path: PATHS.EXPERT,
+          path: `${PATHS.EXPERT}/:expertId?`,
           element: (
             <ProtectedRoute>
               <Expert />

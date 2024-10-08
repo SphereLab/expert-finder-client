@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import rehypeSanitize from 'rehype-sanitize';
 import MDEditor, { MDEditorProps } from '@uiw/react-md-editor';
@@ -17,9 +17,14 @@ const Editor: FC<EditorProps> = ({
   requiredMessage,
   needToShowMessage,
   onChange,
+  value: propsValue,
   ...props
 }) => {
   const [value, setValue] = useState('');
+
+  useEffect(() => {
+    setValue(propsValue ?? '');
+  }, [propsValue]);
 
   const handleContentChange = (content?: string) => {
     setValue(content ?? '');

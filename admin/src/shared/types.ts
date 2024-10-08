@@ -93,7 +93,14 @@ export interface ExpertType {
   educationAndCertification: string;
   locationId: number;
   timezone: string;
+  skills: {
+    skillId: number;
+    isExpertise: boolean;
+  }[];
   skillIds: number[];
   expertiseIds: number[];
-  languages: string[];
+  languages: {
+    languageId: number;
+  }[];
+  languagesIds: number[];
 }

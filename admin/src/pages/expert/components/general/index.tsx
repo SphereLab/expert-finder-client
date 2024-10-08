@@ -117,6 +117,28 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
 
       <FormItem<ExpertType>
         className={styles.formItem}
+        name="languagesIds"
+        label="Languages"
+        rules={fieldRules}
+      >
+        <Select
+          size="large"
+          placeholder="Select language(s) here"
+          mode="multiple"
+          allowClear
+          showSearch
+          optionFilterProp="label"
+        >
+          {languages.map(language => (
+            <Option key={language.id} value={language.id} label={language.name}>
+              {language.name}
+            </Option>
+          ))}
+        </Select>
+      </FormItem>
+
+      <FormItem<ExpertType>
+        className={styles.formItem}
         name="positionId"
         label="Position"
         rules={fieldRules}
@@ -169,28 +191,6 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
           {skills.map(skill => (
             <Option key={skill.id} value={skill.id} label={skill.name}>
               {skill.name}
-            </Option>
-          ))}
-        </Select>
-      </FormItem>
-
-      <FormItem<ExpertType>
-        className={styles.formItem}
-        name="languages"
-        label="Languages"
-        rules={fieldRules}
-      >
-        <Select
-          size="large"
-          placeholder="Select language(s) here"
-          mode="multiple"
-          allowClear
-          showSearch
-          optionFilterProp="label"
-        >
-          {languages.map(language => (
-            <Option key={language.id} value={language.id} label={language.name}>
-              {language.name}
             </Option>
           ))}
         </Select>

@@ -4,13 +4,25 @@ import { ExpertType, PaginationType, SorterType } from '@/shared/types';
 
 export type SetFilters = Dispatch<SetStateAction<FilterType>>;
 
-// TODO: refactor ExpertSourceType
 export interface ExpertSourceType extends ExpertType {
   id: number;
-  firstName: string;
-  profilePicture: string;
-  yearsOfExperience: string;
-  updatedAt: string;
+  displayName: string;
+  totalYears: number;
+  aboutMe: string;
+  experienceHighlights: string;
+  name: string;
+  technologiesAndSkills: string;
+  projectIndustriesHistory: string;
+  educationAndCertification: string;
+  expertStatus: string;
+  slug: string;
+  yearsOfExpertise: string;
+  positionId: number;
+  timezone: string;
+  locationId: number;
+  photo: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface FilterFieldType {
@@ -21,9 +33,7 @@ export interface FilterFieldType {
   yearsOfExpertise: string;
 }
 
-export type ExpertSorterType = SorterType<
-  keyof Pick<ExpertSourceType, 'firstName' | 'profilePicture' | 'updatedAt'>
->;
+export type ExpertSorterType = SorterType<keyof Pick<ExpertSourceType, 'name' | 'updatedAt'>>;
 
 export type FilterType = Partial<FilterFieldType> &
   PaginationType & {

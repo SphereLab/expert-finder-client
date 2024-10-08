@@ -1,4 +1,3 @@
 .editorInput :global(.ant-form-item-control-input) {
-  background-color: red !important;
   display: none !important;
 }
