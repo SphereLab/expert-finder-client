@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Divider, Form } from 'antd';
+import { App, Divider, Form } from 'antd';
 
 import { handleApiRequest } from '@/api/api-service';
 import { REFS } from '@/api/refs';
@@ -15,6 +15,7 @@ import { General } from './components/general';
 import styles from './expert.module.css';
 
 export const Expert = () => {
+  const { message } = App.useApp();
   const [form] = Form.useForm<ExpertType>();
   const navigate = useNavigate();
 
@@ -54,8 +55,56 @@ export const Expert = () => {
     navigate(PATHS.EXPERTS);
   };
 
-  const handleSubmit = (qwe: ExpertType) => {
-    console.log(qwe);
+  const handleSubmit = (fields: ExpertType) => {
+    const { languages: fieldsLanguages, skillIds, expertiseIds, ...restFields } = fields;
+
+    const mergedSkills = expertiseIds.map(id => ({ skillId: id, isExpertise: true }));
+    skillIds
+      .filter(id => !expertiseIds.includes(id))
+      .forEach(id => {
+        mergedSkills.push({ skillId: id, isExpertise: false });
+      });
+
+    const body = {
+      ...restFields,
+      languages: fieldsLanguages.map(id => ({
+        languageId: id,
+      })),
+      skills: mergedSkills,
+    };
+
+    setIsLoading(true);
+
+    const isEditing = false;
+
+    let url;
+    let method;
+
+    if (isEditing) {
+      url = `${REFS.EXPERTS}/${100}`;
+      method = 'PUT';
+    } else {
+      url = REFS.EXPERTS;
+      method = 'POST';
+    }
+
+    handleApiRequest({
+      url,
+      method,
+      body,
+    })
+      .then(() => {
+        message.success(
+          isEditing ? 'Expert updated successfully.' : 'Expert created successfully.',
+        );
+      })
+      .then(navigateToExpertsPage)
+      .catch(() => {
+        message.error('Something went wrong.');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
