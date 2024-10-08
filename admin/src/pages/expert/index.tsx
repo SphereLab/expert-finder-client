@@ -33,6 +33,10 @@ export const Expert = () => {
       form.setFieldsValue({
         ...restValues,
         languagesIds: resLanguages.map(({ languageId }) => languageId),
+        expertiseIds: resSkills
+          .filter(({ isExpertise }) => isExpertise)
+          .map(({ skillId }) => skillId),
+        skillIds: resSkills.filter(({ isExpertise }) => !isExpertise).map(({ skillId }) => skillId),
       });
     },
     [form],
@@ -59,18 +63,15 @@ export const Expert = () => {
         url: REFS.SKILLS,
         method: 'GET',
       }).then(setSkills),
+
+      expertId &&
+        handleApiRequest<ExpertType>({
+          url: `${REFS.EXPERTS}/${Number(expertId)}`,
+        }).then(attachFormValues),
     ]).then(() => {
       setIsLoading(false);
     });
-  }, []);
-
-  useEffect(() => {
-    if (expertId) {
-      handleApiRequest<ExpertType>({
-        url: `${REFS.EXPERTS}/${Number(expertId)}`,
-      }).then(attachFormValues);
-    }
-  }, [expertId, attachFormValues]);
+  }, [attachFormValues, expertId]);
 
   const navigateToExpertsPage = () => {
     navigate(PATHS.EXPERTS);
