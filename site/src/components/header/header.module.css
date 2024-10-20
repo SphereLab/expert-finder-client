@@ -13,13 +13,21 @@
 }
 
 .navList {
+  @apply flex flex-col gap-4;
+}
+
+.navListDesktop {
   @apply flex items-center gap-7;
 }
 
 .navListItem {
-  @apply text-sm font-averta-bold;
+  @apply text-sm font-averta-bold hover:text-gray-600;
 }
 
 .activeNavLink {
   @apply underline;
+}
+
+.menuIcon {
+  @apply cursor-pointer select-none;
 }

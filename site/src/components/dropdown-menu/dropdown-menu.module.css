@@ -1,0 +1,10 @@
+.root {
+  @apply absolute bg-white z-30 text-black p-3.5 max-h-[26rem] overflow-y-auto rounded-md md:top-12 top-10 mt-0.5 right-0  whitespace-nowrap text-sm shadow-[0_2px_20px_rgba(0,0,0,0.1)];
+}
+
+.item {
+  @apply cursor-pointer mt-4 px-2 flex gap-2 items-center first:mt-0;
+  :global(> p) {
+    @apply flex-1;
+  }
+}
