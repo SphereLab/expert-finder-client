@@ -3,7 +3,7 @@ import { Form, Input, InputNumber, Select } from 'antd';
 import timezones from 'timezones-list';
 
 import { CustomRow } from '@/components/custom-row';
-import { fieldRules, statuses } from '@/shared/constants';
+import { fieldRules, statusesList } from '@/shared/constants';
 import { ExpertType, Language, Location, Position, Skill } from '@/shared/types';
 
 import { Section } from '../section';
@@ -107,9 +107,9 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         rules={fieldRules}
       >
         <Select size="large" placeholder="Select status here">
-          {statuses.map(status => (
-            <Option key={status.value} value={status.value}>
-              {status.label}
+          {Object.entries(statusesList).map(([key, { name }]) => (
+            <Option key={key} value={key}>
+              {name}
             </Option>
           ))}
         </Select>
@@ -152,12 +152,7 @@ export const General: FC<GeneralProps> = ({ locations, positions, skills, langua
         </Select>
       </FormItem>
 
-      <FormItem<ExpertType>
-        className={styles.formItem}
-        name="expertiseIds"
-        label="Expertise"
-        rules={fieldRules}
-      >
+      <FormItem<ExpertType> className={styles.formItem} name="expertiseIds" label="Expertise">
         <Select
           size="large"
           placeholder="Select expertise(s) here"

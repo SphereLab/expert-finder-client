@@ -4,7 +4,7 @@ import timezones from 'timezones-list';
 
 import { FilterDropdown } from '@/components/filter-dropdown';
 import { FilterFieldType, FilterType, SetFilters } from '@/pages/experts/types';
-import { statuses } from '@/shared/constants';
+import { statusesList } from '@/shared/constants';
 
 import { FormItem } from './form-item';
 
@@ -46,16 +46,21 @@ export const Filter: FC<FilterProps> = ({ setFilters }) => {
 
       <FormItem name="status" label="Status">
         <Select placeholder="Select status" popupClassName="dropdown-popup">
-          {statuses.map(status => (
-            <Option key={status.value} value={status.value}>
-              {status.label}
+          {Object.entries(statusesList).map(([key, { name }]) => (
+            <Option key={key} value={key}>
+              {name}
             </Option>
           ))}
         </Select>
       </FormItem>
 
       <FormItem name="timezone" label="Timezone">
-        <Select placeholder="Select timezone" showSearch optionFilterProp="label">
+        <Select
+          placeholder="Select timezone"
+          showSearch
+          optionFilterProp="label"
+          popupClassName="dropdown-popup"
+        >
           {timezones.map(timezone => (
             <Option key={timezone.tzCode} value={timezone.tzCode} label={timezone.label}>
               {timezone.label}

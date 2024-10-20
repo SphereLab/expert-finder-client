@@ -1,9 +1,11 @@
 import { FC, Fragment, useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { App, Dropdown, MenuProps } from 'antd';
+import { App, Dropdown, MenuProps, Tag } from 'antd';
 import { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 import { SorterResult } from 'antd/es/table/interface';
+import dayjs from 'dayjs';
 import queryString from 'query-string';
+import timezones from 'timezones-list';
 import { DeleteOutlined, EditOutlined, MoreOutlined, SettingOutlined } from '@ant-design/icons';
 
 import { handleApiRequest } from '@/api/api-service';
@@ -12,6 +14,7 @@ import { DefaultTable } from '@/components/default-table';
 import { DeleteModal } from '@/components/delete-modal';
 import { PATHS } from '@/components/routes/paths';
 import { TableColumnFilter } from '@/components/table-column-filter';
+import { statusesList } from '@/shared/constants';
 import { TableResponse } from '@/shared/types';
 import { useSelectedColumns } from '@/utils/hooks/use-selected-columns';
 import { setItemToLocalStorage } from '@/utils/set-item-to-local-storage';
@@ -21,8 +24,12 @@ import { ExpertSorterType, ExpertSourceType, FilterType, SetFilters } from '../.
 const defaultColumns = [
   { value: 'id', label: 'Id' },
   { value: 'name', label: 'Name' },
-  { value: 'profilePicture', label: 'Profile Picture' },
-  { value: 'yearsOfExperience', label: 'Years Of Experience' },
+  { value: 'yearsOfExpertise', label: 'Years of expertise' },
+  { value: 'totalYears', label: 'Total years' },
+  { value: 'timezone', label: 'Timezone' },
+  { value: 'expertStatus', label: 'Status' },
+  { value: 'createdAt', label: 'Create date' },
+  { value: 'updatedAt', label: 'Update date' },
 ];
 const defaultColumnsKeys = defaultColumns.map(column => column.value);
 const columnName = 'expertsColumns';
@@ -75,14 +82,48 @@ export const ExpertsTable: FC<ExpertsTableProps> = ({ filters, setFilters }) => 
       hidden: !selectedColumns.includes('name'),
     },
     {
-      dataIndex: 'profilePicture',
-      title: 'Profile Picture',
-      hidden: !selectedColumns.includes('profilePicture'),
+      dataIndex: 'yearsOfExpertise',
+      title: 'Years of expertise',
+      hidden: !selectedColumns.includes('yearsOfExpertise'),
     },
     {
-      dataIndex: 'yearsOfExperience',
-      title: 'Years Of Experience',
-      hidden: !selectedColumns.includes('yearsOfExperience'),
+      dataIndex: 'timezone',
+      title: 'Timezone',
+      hidden: !selectedColumns.includes('timezone'),
+      render: timezone => timezones.find(tz => tz.tzCode === timezone)?.label,
+    },
+    {
+      dataIndex: 'totalYears',
+      title: 'Total years',
+      hidden: !selectedColumns.includes('totalYears'),
+    },
+    {
+      dataIndex: 'createdAt',
+      title: 'Create date',
+      render: value => dayjs(value).format('MMM D, YYYY, h:mm A'),
+      hidden: !selectedColumns.includes('createdAt'),
+    },
+    {
+      dataIndex: 'updatedAt',
+      title: 'Update date',
+      render: value => dayjs(value).format('MMM D, YYYY, h:mm A'),
+      hidden: !selectedColumns.includes('updatedAt'),
+    },
+    {
+      dataIndex: 'expertStatus',
+      title: 'Status',
+      hidden: !selectedColumns.includes('expertStatus'),
+      render: (_, { expertStatus }) => (
+        <Tag
+          style={{
+            color: statusesList[expertStatus].color,
+            backgroundColor: statusesList[expertStatus].backgroundColor,
+            borderColor: statusesList[expertStatus].borderColor,
+          }}
+        >
+          {statusesList[expertStatus].name}
+        </Tag>
+      ),
     },
     {
       title: 'Actions',

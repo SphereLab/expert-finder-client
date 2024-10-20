@@ -9,17 +9,23 @@ export const fieldRules = [
 
 export const sortDirections: SortOrder[] = ['ascend', 'descend', 'ascend'];
 
-export const statuses = [
-  {
-    label: 'Active',
-    value: 'active',
+export const statusesList = {
+  active: {
+    name: 'Active',
+    color: '#1677FF',
+    backgroundColor: '#E6F4FF',
+    borderColor: '#91CAFF',
   },
-  {
-    label: 'Archived',
-    value: 'archived',
+  draft: {
+    name: 'Draft',
+    color: 'rgba(48, 58, 93, 0.88)',
+    backgroundColor: '#EBEBEC',
+    borderColor: 'rgba(48, 58, 93, 0.15)',
   },
-  {
-    label: 'Draft',
-    value: 'draft',
+  archived: {
+    name: 'Archived',
+    color: '#FAAD14',
+    backgroundColor: '#FFFBE6',
+    borderColor: '#FFE58F',
   },
-];
+};

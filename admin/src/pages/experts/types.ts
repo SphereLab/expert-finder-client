@@ -14,7 +14,7 @@ export interface ExpertSourceType extends ExpertType {
   technologiesAndSkills: string;
   projectIndustriesHistory: string;
   educationAndCertification: string;
-  expertStatus: string;
+  expertStatus: 'active' | 'draft' | 'archived';
   slug: string;
   yearsOfExpertise: string;
   positionId: number;
