@@ -1,3 +1,9 @@
+import { NavigateBack } from '@/components/navigate-back';
+
 export const ContactUs = () => {
-  return <div>ContactUs</div>;
+  return (
+    <div>
+      <NavigateBack />
+    </div>
+  );
 };

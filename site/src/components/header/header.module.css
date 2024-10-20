@@ -5,7 +5,7 @@
 }
 
 .header {
-  @apply flex w-full items-center justify-between max-w-6xl m-auto px-10 xl:px-10;
+  @apply flex w-full items-center justify-between page-layout;
 }
 
 .logo {

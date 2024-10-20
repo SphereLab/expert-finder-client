@@ -3,7 +3,7 @@
 }
 
 .banner {
-  @apply block md:flex w-full items-center max-w-6xl m-auto py-12 px-10 xl:px-10;
+  @apply block md:flex w-full items-center py-12 page-layout;
 }
 
 .firstColumn {

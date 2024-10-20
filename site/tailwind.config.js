@@ -9,5 +9,13 @@ export default {
       'averta-black': ['Averta-Black', 'sans-serif'],
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        '.page-layout': {
+          '@apply max-w-6xl px-10 xl:px-10 m-auto': {},
+        },
+      });
+    },
+  ],
 };
