@@ -1,5 +1,15 @@
+import { Fragment } from 'react/jsx-runtime';
+
+import { Routes } from '@/components/routes';
+import { TailwindIndicator } from '@/components/tailwind-indicator';
+
 function App() {
-  return <div className="text-3xl">App asdas</div>;
+  return (
+    <Fragment>
+      <Routes />
+      <TailwindIndicator />
+    </Fragment>
+  );
 }
 
 export default App;
