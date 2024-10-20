@@ -1,8 +1,17 @@
+import { useLocation } from 'react-router-dom';
+
 import { Button } from '../button';
+import { PATHS } from '../routes/paths';
 
 import styles from './banner.module.css';
 
 export const Banner = () => {
+  const { pathname } = useLocation();
+
+  if (pathname === PATHS.PRIVACY_POLICY) {
+    return null;
+  }
+
   return (
     <div className={styles.root}>
       <div className={styles.banner}>

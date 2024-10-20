@@ -1,0 +1,23 @@
+.root {
+  @apply w-full items-center max-w-6xl m-auto px-10 xl:px-10 text-[#303a5d];
+
+  & h1 {
+    @apply my-6 font-averta-bold font-bold text-5xl;
+  }
+
+  & p {
+    @apply mb-2;
+  }
+
+  & strong {
+    @apply font-averta-bold;
+  }
+
+  & ul {
+    @apply pl-10;
+  }
+
+  & li {
+    @apply list-disc;
+  }
+}

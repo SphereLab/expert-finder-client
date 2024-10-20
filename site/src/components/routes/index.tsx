@@ -4,6 +4,7 @@ import { ContactUs } from '@/pages/contact-us';
 import { Expert } from '@/pages/expert';
 import { Experts } from '@/pages/experts';
 import { Home } from '@/pages/home';
+import { PrivacyPolicy } from '@/pages/privacy-policy';
 
 import { AppLayout } from '../app-layout';
 import { PATHS } from './paths';
@@ -25,10 +26,13 @@ const AppRoutes = () => {
           path: PATHS.EXPERT,
           element: <Expert />,
         },
-
         {
           path: PATHS.CONTACT_US,
           element: <ContactUs />,
+        },
+        {
+          path: PATHS.PRIVACY_POLICY,
+          element: <PrivacyPolicy />,
         },
         {
           path: '*',
