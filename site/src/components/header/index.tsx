@@ -1,11 +1,10 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { HiOutlineMenu } from 'react-icons/hi';
-import { NavLink, NavLinkRenderProps } from 'react-router-dom';
 
 import logo from '@/assets/images/logo-dark.svg';
-import { cn } from '@/utils/cn';
 import { useBreakpoint } from '@/utils/use-breakpoint';
 
+import { CustomNavLink } from '../custom-nav-link';
 import { DropdownMenu } from '../dropdown-menu';
 import { PATHS } from '../routes/paths';
 
@@ -22,19 +21,13 @@ export const Header = () => {
     }
   }, [isAboveLg]);
 
-  const isActiveLink = ({ isActive }: NavLinkRenderProps) => cn(isActive && styles.activeNavLink);
-
   const renderNavItems = () => (
     <ul className={isBelowLg ? styles.navList : styles.navListDesktop}>
       <li className={styles.navListItem}>
-        <NavLink className={isActiveLink} to={PATHS.EXPERTS}>
-          Find an expert
-        </NavLink>
+        <CustomNavLink to={PATHS.EXPERTS}>Find an expert</CustomNavLink>
       </li>
       <li className={styles.navListItem}>
-        <NavLink className={isActiveLink} to={PATHS.CONTACT_US}>
-          Contact us
-        </NavLink>
+        <CustomNavLink to={PATHS.CONTACT_US}>Contact us</CustomNavLink>
       </li>
     </ul>
   );
@@ -42,9 +35,9 @@ export const Header = () => {
   return (
     <header className={styles.root}>
       <div className={styles.header}>
-        <NavLink to={PATHS.HOME}>
+        <CustomNavLink needActive={false} to={PATHS.HOME}>
           <img className={styles.logo} src={logo} alt="logo" />
-        </NavLink>
+        </CustomNavLink>
 
         {isBelowLg ? (
           <Fragment>

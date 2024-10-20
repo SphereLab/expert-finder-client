@@ -3,4 +3,5 @@ export enum PATHS {
   EXPERTS = '/experts',
   EXPERT = '/experts/:id',
   CONTACT_US = '/contact-us',
+  PRIVACY_POLICY = '/privacy-policy',
 }

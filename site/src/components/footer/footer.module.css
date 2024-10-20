@@ -1,0 +1,15 @@
+.root {
+  @apply flex bg-black text-white text-sm;
+}
+
+.footer {
+  @apply flex flex-col lg:flex-row w-full items-center justify-between max-w-6xl m-auto px-10 xl:px-10 py-10 gap-8 lg:gap-0;
+}
+
+.logo {
+  @apply h-[33px];
+}
+
+.sphereLink {
+  @apply font-thin underline;
+}
