@@ -21,7 +21,7 @@
 }
 
 .navListItem {
-  @apply text-sm font-averta-bold hover:text-gray-600;
+  @apply text-sm font-averta-bold font-bold hover:text-gray-600;
 }
 
 .activeNavLink {
