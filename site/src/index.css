@@ -1,4 +1,6 @@
-@import 'modern-normalize/modern-normalize.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
   font-family: 'Averta-Regular';
