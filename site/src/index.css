@@ -2,12 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Averta-Regular';
-  src: url(./assets/fonts/Averta-Regular.woff2);
-}
+@layer base {
+  @font-face {
+    font-family: 'Averta-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(./assets/fonts/Averta-Regular.woff2) format('woff2');
+  }
 
-@font-face {
-  font-family: 'Averta-Semibold';
-  src: url(./assets/fonts/Averta-Semibold.woff2);
+  @font-face {
+    font-family: 'Averta-Semibold';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(./assets/fonts/Averta-Semibold.woff2) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Averta-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(./assets/fonts/Averta-Semibold.woff2) format('woff2');
+  }
 }

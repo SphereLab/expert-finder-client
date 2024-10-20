@@ -2,7 +2,11 @@
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
-    extend: {},
+    fontFamily: {
+      'averta': ['Averta-Regular', 'sans-serif'],
+      'averta-semibold': ['Averta-Semibold', 'sans-serif'],
+      'averta-bold': ['Averta-Bold', 'sans-serif'],
+    },
   },
   plugins: [],
 };

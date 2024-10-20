@@ -1,0 +1,25 @@
+.root {
+  @apply flex h-[60px] bg-white opacity-90;
+
+  box-shadow: 0px 4px 20px 0px rgba(72, 164, 236, 0.1);
+}
+
+.header {
+  @apply flex w-full items-center justify-between max-w-6xl m-auto px-10 xl:px-10;
+}
+
+.logo {
+  @apply h-7;
+}
+
+.navList {
+  @apply flex items-center gap-7;
+}
+
+.navListItem {
+  @apply text-sm font-averta-bold;
+}
+
+.activeNavLink {
+  @apply underline;
+}
