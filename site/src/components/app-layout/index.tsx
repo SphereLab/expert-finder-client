@@ -1,17 +1,18 @@
 import { Outlet } from 'react-router-dom';
-import { Fragment } from 'react/jsx-runtime';
 
 import { Banner } from '../banner';
 import { Footer } from '../footer';
 import { Header } from '../header';
 
-export const AppLayout = () => {
-  return (
-    <Fragment>
+import styles from './app-layout.module.css';
+
+export const AppLayout = () => (
+  <div className={styles.root}>
+    <div className={styles.contentWrapper}>
       <Header />
       <Banner />
       <Outlet />
-      <Footer />
-    </Fragment>
-  );
-};
+    </div>
+    <Footer />
+  </div>
+);

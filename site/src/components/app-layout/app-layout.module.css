@@ -1,0 +1,7 @@
+.root {
+  @apply relative min-h-screen;
+}
+
+.contentWrapper {
+  @apply pb-[217px] lg:pb-[113px];
+}

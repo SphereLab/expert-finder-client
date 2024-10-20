@@ -1,5 +1,5 @@
 .root {
-  @apply flex bg-black text-white text-sm;
+  @apply absolute bottom-0 w-full flex bg-black text-white text-sm;
 }
 
 .footer {
