@@ -1,0 +1,22 @@
+{
+  "printWidth": 100,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "quoteProps": "consistent",
+  "arrowParens": "avoid",
+  "endOfLine": "lf",
+  "importOrder": [
+    "^react",
+    "<THIRD_PARTY_MODULES>",
+    "^@[a-zA-Z0-9_-]+(/[a-zA-Z0-9_-]+)+$",
+    "",
+    "^types$",
+    "^@/([^/]+/.*)$",
+    "",
+    "^[./](?!.*\\.css$).*$",
+    "",
+    ".css$"
+  ],
+  "importOrderParserPlugins": ["typescript", "jsx"],
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"]
+}
