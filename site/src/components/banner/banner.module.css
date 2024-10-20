@@ -1,0 +1,35 @@
+.root {
+  @apply bg-[#48a4ec] px-5;
+}
+
+.banner {
+  @apply block md:flex w-full items-center max-w-6xl m-auto py-12 px-10 xl:px-10;
+}
+
+.firstColumn {
+  @apply flex flex-col gap-2.5 flex-1 mb-[30px] md:mb-0;
+}
+
+.secondColumnWrapper {
+  @apply flex flex-1 justify-center md:justify-end;
+}
+
+.secondColumn {
+  @apply w-60 flex flex-col items-center;
+}
+
+.title {
+  @apply font-averta-black text-4xl text-white text-center md:text-start;
+}
+
+.subtitle {
+  @apply font-averta text-xl text-white;
+}
+
+.description {
+  @apply font-averta text-sm text-white;
+}
+
+.button {
+  @apply w-full mt-2 uppercase !text-[#303a5d];
+}

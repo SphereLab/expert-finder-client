@@ -1,5 +1,6 @@
 import { FC, ReactNode, SyntheticEvent, useEffect, useRef } from 'react';
-import cn from 'clsx';
+
+import { cn } from '@/utils/cn';
 
 import styles from './dropdown-menu.module.css';
 

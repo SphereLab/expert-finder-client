@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { HiOutlineMenu } from 'react-icons/hi';
 import { NavLink, NavLinkRenderProps } from 'react-router-dom';
-import clsx from 'clsx';
 
 import logo from '@/assets/images/logo-dark.svg';
+import { cn } from '@/utils/cn';
 import { useBreakpoint } from '@/utils/use-breakpoint';
 
 import { DropdownMenu } from '../dropdown-menu';
@@ -22,7 +22,7 @@ export const Header = () => {
     }
   }, [isAboveLg]);
 
-  const isActiveLink = ({ isActive }: NavLinkRenderProps) => clsx(isActive && styles.activeNavLink);
+  const isActiveLink = ({ isActive }: NavLinkRenderProps) => cn(isActive && styles.activeNavLink);
 
   const renderNavItems = () => (
     <ul className={isBelowLg ? styles.navList : styles.navListDesktop}>

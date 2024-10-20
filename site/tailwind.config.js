@@ -6,6 +6,7 @@ export default {
       'averta': ['Averta-Regular', 'sans-serif'],
       'averta-semibold': ['Averta-Semibold', 'sans-serif'],
       'averta-bold': ['Averta-Bold', 'sans-serif'],
+      'averta-black': ['Averta-Black', 'sans-serif'],
     },
   },
   plugins: [],

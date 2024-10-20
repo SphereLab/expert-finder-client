@@ -1,0 +1,7 @@
+.root {
+  @apply border border-[#1b75bb] bg-transparent text-sm font-averta rounded-sm py-2.5 px-5;
+}
+
+.primary {
+  @apply bg-[#fdb924] border-[#fdb924] text-white text-base;
+}

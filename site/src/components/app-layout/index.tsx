@@ -1,16 +1,15 @@
 import { Outlet } from 'react-router-dom';
+import { Fragment } from 'react/jsx-runtime';
 
-import { Header } from '@/components/header';
-
-import styles from './app-layout.module.css';
+import { Banner } from '../banner';
+import { Header } from '../header';
 
 export const AppLayout = () => {
   return (
-    <div>
+    <Fragment>
       <Header />
-      <div>
-        <Outlet />
-      </div>
-    </div>
+      <Banner />
+      <Outlet />
+    </Fragment>
   );
 };
