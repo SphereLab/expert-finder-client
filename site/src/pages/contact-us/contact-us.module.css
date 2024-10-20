@@ -1,0 +1,7 @@
+.root {
+  @apply page-layout py-4;
+}
+
+.form {
+  @apply flex justify-center;
+}
