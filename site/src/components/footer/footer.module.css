@@ -1,9 +1,25 @@
 .root {
-  @apply absolute bottom-0 w-full flex bg-black text-white text-sm;
+  @apply absolute bottom-0 w-full flex bg-black text-white text-[13px] font-averta-bold font-bold;
 }
 
 .footer {
-  @apply flex flex-col lg:flex-row w-full items-center justify-between page-layout py-10 gap-8 lg:gap-0;
+  @apply w-full page-layout py-10;
+}
+
+.firstRow {
+  @apply flex w-full items-center justify-evenly mb-10;
+}
+
+.secondRow {
+  @apply text-center;
+}
+
+.mainSiteInfo {
+  @apply flex gap-6 items-center;
+}
+
+.externalLinks {
+  @apply flex gap-6 items-center;
 }
 
 .logo {
@@ -11,5 +27,5 @@
 }
 
 .sphereLink {
-  @apply font-thin underline;
+  @apply font-averta font-normal;
 }
