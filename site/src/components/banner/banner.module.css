@@ -1,35 +1,21 @@
 .root {
-  @apply bg-[#48a4ec] px-5;
+  @apply px-5;
+
+  background: radial-gradient(ellipse, #303a5d 50%, #1e1f24 100%);
 }
 
 .banner {
-  @apply block md:flex w-full items-center py-12 page-layout;
-}
-
-.firstColumn {
-  @apply flex flex-col gap-2.5 flex-1 mb-[30px] md:mb-0;
-}
-
-.secondColumnWrapper {
-  @apply flex flex-1 justify-center md:justify-end;
-}
-
-.secondColumn {
-  @apply w-60 flex flex-col items-center;
+  @apply flex flex-col gap-10 py-20 page-layout;
 }
 
 .title {
-  @apply font-averta-black text-4xl text-white text-center md:text-start;
+  @apply font-averta-bold text-4xl text-white text-center;
 }
 
 .subtitle {
-  @apply font-averta text-xl text-white;
-}
-
-.description {
-  @apply font-averta text-sm text-white;
+  @apply font-averta text-xl text-white text-center;
 }
 
 .button {
-  @apply w-full mt-2 uppercase !text-[#303a5d];
+  @apply w-64 m-auto uppercase bg-white text-[#303a5d] px-12 py-3.5 text-center;
 }

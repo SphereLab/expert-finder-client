@@ -1,37 +1,31 @@
-import { useLocation } from 'react-router-dom';
-
-import { Button } from '../button';
-import { PATHS } from '../routes/paths';
+import { FC } from 'react';
+import { Link, To } from 'react-router-dom';
 
 import styles from './banner.module.css';
 
-export const Banner = () => {
-  const { pathname } = useLocation();
+interface BannerProps {
+  id?: string;
+  subtitle?: string;
+  buttonText?: string;
+  link: To;
+}
 
-  if (pathname === PATHS.PRIVACY_POLICY) {
-    return null;
-  }
-
-  return (
-    <div className={styles.root}>
-      <div className={styles.banner}>
-        <div className={styles.firstColumn}>
-          <h1 className={styles.title}>Find an Expert</h1>
-          <h2 className={styles.subtitle}>
-            Sphere Software has over 15 years of experience providing the right expert talent and
-            collaborating with partners to meet their needs.
-          </h2>
-        </div>
-        <div className={styles.secondColumnWrapper}>
-          <div className={styles.secondColumn}>
-            <span className={styles.description}>Did not find the desired profile?</span>
-            <span className={styles.description}>More experts are available.</span>
-            <Button className={styles.button} primary>
-              Talk to our team
-            </Button>
-          </div>
-        </div>
-      </div>
+export const Banner: FC<BannerProps> = ({
+  id,
+  subtitle = 'Did not find the desired profile? More experts are available.',
+  buttonText = 'Talk to our team',
+  link,
+}) => (
+  <div id={id} className={styles.root}>
+    <div className={styles.banner}>
+      <h1 className={styles.title}>
+        With 19 years of experience, Sphere knows how to find the right talent and work closely with
+        clients to get the job done.
+      </h1>
+      <h2 className={styles.subtitle}>{subtitle}</h2>
+      <Link to={link} className={styles.button}>
+        {buttonText}
+      </Link>
     </div>
-  );
-};
+  </div>
+);

@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom';
 
-import { Banner } from '../banner';
 import { Footer } from '../footer';
 import { Header } from '../header';
 
@@ -10,7 +9,6 @@ export const AppLayout = () => (
   <div className={styles.root}>
     <div className={styles.contentWrapper}>
       <Header />
-      <Banner />
       <Outlet />
     </div>
     <Footer />

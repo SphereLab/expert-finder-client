@@ -1,4 +1,4 @@
-import { Fragment } from 'react/jsx-runtime';
+import { Fragment } from 'react';
 
 import { Routes } from '@/components/routes';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
