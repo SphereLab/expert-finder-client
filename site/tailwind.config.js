@@ -13,7 +13,7 @@ export default {
     function ({ addComponents }) {
       addComponents({
         '.page-layout': {
-          '@apply max-w-6xl px-10 xl:px-10 m-auto': {},
+          '@apply max-w-[1200px] px-6 xl:px-0 m-auto': {},
         },
       });
     },

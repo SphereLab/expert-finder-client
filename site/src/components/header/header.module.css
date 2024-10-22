@@ -1,7 +1,5 @@
 .root {
-  @apply flex h-[60px] bg-white opacity-90;
-
-  box-shadow: 0px 4px 20px 0px rgba(72, 164, 236, 0.1);
+  @apply flex h-[80px] bg-[#303A5D];
 }
 
 .header {
@@ -21,7 +19,7 @@
 }
 
 .navListItem {
-  @apply text-sm font-averta-bold font-bold hover:text-gray-600;
+  @apply text-white text-lg leading-6 font-averta-bold font-bold hover:text-gray-600;
 }
 
 .activeNavLink {

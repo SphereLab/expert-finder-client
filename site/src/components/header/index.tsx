@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { HiOutlineMenu } from 'react-icons/hi';
 
-import logo from '@/assets/images/logo-dark.svg';
+import logo from '@/assets/images/logo-light.svg';
 import { useBreakpoint } from '@/utils/use-breakpoint';
 
 import { CustomNavLink } from '../custom-nav-link';
