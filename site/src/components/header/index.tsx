@@ -1,7 +1,9 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { HiOutlineMenu } from 'react-icons/hi';
+import { useLocation } from 'react-router-dom';
 
 import logo from '@/assets/images/logo-light.svg';
+import { cn } from '@/utils/cn';
 import { useBreakpoint } from '@/utils/use-breakpoint';
 
 import { CustomNavLink } from '../custom-nav-link';
@@ -11,6 +13,7 @@ import { PATHS } from '../routes/paths';
 import styles from './header.module.css';
 
 export const Header = () => {
+  const { pathname } = useLocation();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const { isBelowLg, isAboveLg } = useBreakpoint('lg');
   const menuIconRef = useRef<HTMLDivElement | null>(null);
@@ -35,7 +38,11 @@ export const Header = () => {
   return (
     <header className={styles.root}>
       <div className={styles.header}>
-        <CustomNavLink needActive={false} to={PATHS.HOME}>
+        <CustomNavLink
+          needActive={false}
+          to={PATHS.HOME}
+          className={cn(pathname === PATHS.HOME && 'cursor-auto')}
+        >
           <img className={styles.logo} src={logo} alt="logo" />
         </CustomNavLink>
 
